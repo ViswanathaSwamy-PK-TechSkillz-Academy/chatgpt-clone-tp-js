@@ -16,11 +16,11 @@ export default function RootLayout({ children }) {
         <title>ChatGPT - Login or Sign Up</title>
       </head>
       <body className={inter.className}>
-        <main>
-          <UserProvider>
+        <UserProvider>
+          <main>
             {children}
-          </UserProvider>
-        </main>
+          </main>
+        </UserProvider>
       </body>
     </html>
   );
