@@ -21,9 +21,15 @@ export default function SigninSignup() {
     }, []);
 
 
-    if (session !== null && session.user !== null) {
-        window.location.href = '/chat';
-    }
+    useEffect(() => {
+        console.log('inside useEffect() :: Session: ', session);
+        // alert(JSON.stringify(session));
+        // alert(' User: ', session?.user);
+
+        if (session !== null && session.user !== null && session.user !== undefined) {
+            window.location.href = '/chat';
+        }
+    }, [session]);
 
     if (isLoading) return <div>Loading...</div>;
 

@@ -10,10 +10,10 @@ export default function chat() {
             </Head>
 
             <div className="grid h-screen grid-cols-[260px_1fr]">
-                <div>
+                <div className='bg-blue-900 text-white'>
                     Sidebar
                 </div>
-                <div>
+                <div className='bg-gradient-to-r from-blue-200 to-blue-500'>
                     Chat
                 </div>
             </div>
