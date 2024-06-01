@@ -1,5 +1,7 @@
 import React from 'react'
 import Head from 'next/head'
+import "@/styles/globals.css";
+import { ChatSidebar } from '@/components/ChatSidebar';
 
 export default function chat() {
     return (
@@ -9,11 +11,10 @@ export default function chat() {
             </Head>
 
             <div className="grid h-screen grid-cols-[260px_1fr]">
-                <div className="bg-gray-200 p-4">
-                    Sidebar
-                </div>
-                <div className="bg-gray-100 p-4">
-                    Chat
+                <ChatSidebar />
+                <div className='bg-gradient-to-r from-blue-200 to-blue-500 flex flex-col'>
+                    <div className='flex-1'>Chat Window</div>
+                    <footer className='bg-gray-800 p-10 text-white'>Chat Input</footer>
                 </div>
             </div>
         </>
