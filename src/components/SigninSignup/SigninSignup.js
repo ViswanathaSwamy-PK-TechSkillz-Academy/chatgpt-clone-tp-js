@@ -3,10 +3,26 @@
 import React from 'react'
 import Link from "next/link";
 import { useUser } from '@auth0/nextjs-auth0/client';
+import { useEffect, useState } from 'react';
 
 export default function SigninSignup() {
 
     const { isLoading, error, user } = useUser();
+    const [session, setSession] = useState(null);
+
+    useEffect(() => {
+        const fetchSession = async () => {
+            const res = await fetch('/api/session');
+            const data = await res.json();
+            setSession(data);
+        };
+
+        fetchSession();
+    }, []);
+
+    if(session) { 
+        window.location.href = '/chat';
+    }
 
     if (isLoading) return <div>Loading...</div>;
 

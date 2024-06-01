@@ -1,5 +1,3 @@
-'use client';
-
 import SigninSignup from "@/components/SigninSignup/SigninSignup";
 
 export default function Home() {
