@@ -11,6 +11,8 @@ npm i @auth0/nextjs-auth0 @fortawesome/fontawesome-svg-core @fortawesome/free-so
 npm i mongodb openai-edge-stream react-markdown sharp uuid
 npm i -D @tailwindcss/typography
 
+npm list tailwindcss
+
 AUTH0_SECRET='use [openssl rand -hex 32] to generate a 32 bytes value'
 ```
 

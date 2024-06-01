@@ -1,5 +1,6 @@
 import React from 'react'
 import Head from 'next/head'
+import "@/styles/globals.css";
 
 export default function chat() {
     return (
@@ -9,10 +10,10 @@ export default function chat() {
             </Head>
 
             <div className="grid h-screen grid-cols-[260px_1fr]">
-                <div className="bg-gray-200 p-4">
+                <div>
                     Sidebar
                 </div>
-                <div className="bg-gray-100 p-4">
+                <div>
                     Chat
                 </div>
             </div>
