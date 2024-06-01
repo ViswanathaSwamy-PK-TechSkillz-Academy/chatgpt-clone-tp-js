@@ -20,7 +20,8 @@ export default function SigninSignup() {
         fetchSession();
     }, []);
 
-    if(session) { 
+
+    if (session !== null && session.user !== null) {
         window.location.href = '/chat';
     }
 
