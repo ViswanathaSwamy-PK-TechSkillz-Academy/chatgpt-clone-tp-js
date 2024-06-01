@@ -26,7 +26,7 @@ export const ChatSidebar = ({ chatId }) => {
       >
         <FontAwesomeIcon icon={faPlus} /> New chat
       </Link>
-      <div className="flex-1 overflow-auto bg-blue-800">
+      <div className="flex-1 overflow-auto bg-blue-950">
         {chatList.map((chat) => (
           <Link
             key={chat._id}
