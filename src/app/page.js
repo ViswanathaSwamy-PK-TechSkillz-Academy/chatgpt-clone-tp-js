@@ -15,7 +15,7 @@ export default function Home() {
   return (
     <div>
       <Head>
-        <title>chatGPT - Clone</title>
+        <title>ChatGPT - Clone</title>
       </Head>
       <h1>Welcome to Chat Home Page</h1>
       {user ? (

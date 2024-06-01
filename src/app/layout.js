@@ -13,7 +13,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-        <title>My Next.js App</title>
+        <title>ChatGPT - Clone</title>
       </head>
       <body className={inter.className}>
         <main>
