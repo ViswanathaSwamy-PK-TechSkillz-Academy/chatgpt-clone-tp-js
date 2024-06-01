@@ -1,10 +1,15 @@
 import Image from "next/image";
+import Head from 'next/head'
+import Link from "next/link";
 
 export default function Home() {
   return (
     <div>
-      <h1>Welcome to Next.js 14!</h1>
-      <p>This is the index page of your Next.js application.</p>
+      <Head>
+        <title>chatGPT - Clone</title>
+      </Head>
+      <h1>Welcome to Chat Home Page</h1>
+      <Link href="/api/auth/login">Login</Link>
     </div>
   );
 }
