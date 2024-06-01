@@ -8,8 +8,6 @@ export default function chat() {
                 <title>New Chat</title>
             </Head>
 
-            <div className="bg-red-500 text-white p-4">Test Tailwind CSS</div>
-
             <div className="grid h-screen grid-cols-[260px_1fr]">
                 <div className="bg-gray-200 p-4">
                     Sidebar
