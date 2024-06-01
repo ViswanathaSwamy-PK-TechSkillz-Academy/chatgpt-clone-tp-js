@@ -22,10 +22,6 @@ export default function SigninSignup() {
 
 
     useEffect(() => {
-        console.log('inside useEffect() :: Session: ', session);
-        // alert(JSON.stringify(session));
-        // alert(' User: ', session?.user);
-
         if (session !== null && session.user !== null && session.user !== undefined) {
             window.location.href = '/chat';
         }
