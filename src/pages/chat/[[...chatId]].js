@@ -13,8 +13,9 @@ export default function chat() {
                 <div className='bg-blue-900 text-white'>
                     Sidebar
                 </div>
-                <div className='bg-gradient-to-r from-blue-200 to-blue-500'>
-                    Chat
+                <div className='bg-gradient-to-r from-blue-200 to-blue-500 flex flex-col'>
+                    <div className='flex-1'>Chat Window</div>
+                    <footer className='bg-gray-800 p-10'>Chat Input</footer>
                 </div>
             </div>
         </>
