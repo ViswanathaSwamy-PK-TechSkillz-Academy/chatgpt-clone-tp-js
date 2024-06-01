@@ -11,7 +11,14 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <head>
+        <title>My Next.js App</title>
+      </head>
+      <body className={inter.className}>
+        <main>
+          {children}
+        </main>
+      </body>
     </html>
   );
 }
