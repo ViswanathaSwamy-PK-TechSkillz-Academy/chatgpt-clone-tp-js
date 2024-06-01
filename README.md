@@ -6,6 +6,10 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ```powershell
 npx create-next-app projectName --use-npm
+
+npm i @auth0/nextjs-auth0 @fortawesome/fontawesome-svg-core @fortawesome/free-solid-svg-icons @fortawesome/react-fontawesome
+npm i mongodb openai-edge-stream react-markdown sharp uuid
+npm i -D @tailwindcss/typography
 ```
 
 ## Getting Started
