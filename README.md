@@ -12,6 +12,10 @@ npm i mongodb openai-edge-stream react-markdown sharp uuid
 npm i -D @tailwindcss/typography
 ```
 
+## Reference(s)
+
+> 1. <https://www.freecodecamp.org/news/how-to-deploy-next-js-app-to-github-pages/#:~:text=To%20publish%20our%20Next.,the%20deployment%20Source%20(3).>
+
 ## Getting Started
 
 First, run the development server:
