@@ -3,11 +3,19 @@ import Head from 'next/head'
 
 export default function chat() {
     return (
-        <div>
+        <>
             <Head>
-                <title>chatGPT - Clone</title>
+                <title>New Chat</title>
             </Head>
-            <h1>Welcome to Chat Page</h1>
-        </div>
+
+            <div className="grid h-screen grid-cols-[260px_1fr]">
+                <div className="bg-gray-200 p-4">
+                    Sidebar
+                </div>
+                <div className="bg-gray-100 p-4">
+                    Chat
+                </div>
+            </div>
+        </>
     )
 }

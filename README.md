@@ -10,7 +10,13 @@ npx create-next-app projectName --use-npm
 npm i @auth0/nextjs-auth0 @fortawesome/fontawesome-svg-core @fortawesome/free-solid-svg-icons @fortawesome/react-fontawesome
 npm i mongodb openai-edge-stream react-markdown sharp uuid
 npm i -D @tailwindcss/typography
+
+AUTH0_SECRET='use [openssl rand -hex 32] to generate a 32 bytes value'
 ```
+
+## Reference(s)
+
+> 1. <https://www.freecodecamp.org/news/how-to-deploy-next-js-app-to-github-pages/#:~:text=To%20publish%20our%20Next.,the%20deployment%20Source%20(3).>
 
 ## Getting Started
 
