@@ -1,6 +1,6 @@
 import { SigninSignup } from "@/components/SigninSignup";
 
-export default function Home() {
+const Home = () => {
   return (
     <>
       <div className="flex justify-center items-center min-h-screen w-full bg-gray-800 text-white text-center">
@@ -10,4 +10,6 @@ export default function Home() {
       </div>
     </>
   );
-}
+};
+
+export default Home;

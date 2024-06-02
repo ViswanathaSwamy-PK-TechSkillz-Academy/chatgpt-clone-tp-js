@@ -5,7 +5,7 @@ import { ChatSidebar } from '@/components/ChatSidebar';
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
-export default function ChatPage({ chatId, title, messages = [] }) {
+const ChatPage = ({ chatId, title, messages = [] }) => {
 
     console.log("props: ", title, messages);
     const [newChatId, setNewChatId] = useState(null);
@@ -51,4 +51,6 @@ export default function ChatPage({ chatId, title, messages = [] }) {
             </div>
         </>
     )
-}
+};
+
+export default ChatPage;
