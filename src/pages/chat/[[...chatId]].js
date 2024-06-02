@@ -30,7 +30,7 @@ export default function ChatPage({ chatId, title, messages = [] }) {
 
             <div className="grid h-screen grid-cols-[260px_1fr]">
                 <ChatSidebar />
-                <div className='bg-gradient-to-r from-blue-200 to-blue-500 flex flex-col'>
+                <div className="flex flex-col overflow-hidden bg-gray-700 text-white">
                     <div className='flex-1'>Chat Window</div>
                     <footer className='bg-gray-800 p-10 text-white'>
                         <form onSubmit={handleSubmit}>
@@ -39,7 +39,7 @@ export default function ChatPage({ chatId, title, messages = [] }) {
                                     value={messageText}
                                     onChange={(e) => setMessageText(e.target.value)}
                                     placeholder={generatingResponse ? "" : "Send a message..."}
-                                    className="w-full resize-none rounded-md bg-blue-400 p-2 text-white focus:border-emerald-500 focus:bg-gray-600 focus:outline focus:outline-emerald-500"
+                                    className="w-full resize-none rounded-md bg-gray-700 p-2 text-white focus:border-emerald-500 focus:bg-gray-600 focus:outline focus:outline-emerald-500"
                                 />
                                 <button type="submit" className="btn">
                                     Send
