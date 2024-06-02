@@ -5,7 +5,8 @@ import Link from "next/link";
 import { useUser } from '@auth0/nextjs-auth0/client';
 import { useEffect, useState } from 'react';
 
-export default function SigninSignup() {
+
+export const SigninSignup = () => {
 
     const { isLoading, error, user } = useUser();
     const [session, setSession] = useState(null);
@@ -43,4 +44,4 @@ export default function SigninSignup() {
             )}
         </>
     )
-}
+};
