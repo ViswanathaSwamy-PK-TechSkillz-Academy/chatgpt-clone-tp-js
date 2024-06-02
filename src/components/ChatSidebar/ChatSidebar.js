@@ -6,17 +6,17 @@ import { useEffect, useState } from "react";
 export const ChatSidebar = ({ chatId }) => {
   const [chatList, setChatList] = useState([]);
 
-  useEffect(() => {
-    const loadChatList = async () => {
-      const response = await fetch(`/api/chat/getChatList`, {
-        method: "POST",
-      });
-      const json = await response.json();
-      console.log("CHAT LIST: ", json);
-      setChatList(json?.chats || []);
-    };
-    loadChatList();
-  }, [chatId]);
+  // useEffect(() => {
+  //   const loadChatList = async () => {
+  //     const response = await fetch(`/api/chat/getChatList`, {
+  //       method: "POST",
+  //     });
+  //     const json = await response.json();
+  //     console.log("CHAT LIST: ", json);
+  //     setChatList(json?.chats || []);
+  //   };
+  //   loadChatList();
+  // }, [chatId]);
 
   return (
     <div className="flex flex-col overflow-hidden bg-gray-900 text-white">
