@@ -1,6 +1,5 @@
 import React from 'react'
 import Head from 'next/head'
-import "@/styles/globals.css";
 import { ChatSidebar } from '@/components/ChatSidebar';
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
