@@ -1,13 +1,15 @@
-import SigninSignup from "@/components/SigninSignup/SigninSignup";
+import { SigninSignup } from "@/components/SigninSignup";
 
-export default function Home() {
+const Home = () => {
   return (
     <>
-      <div className="flex justify-center items-center min-h-screen w-full bg-gradient-to-r from-blue-200 to-blue-400 text-white text-center">
+      <div className="flex justify-center items-center min-h-screen w-full bg-gray-800 text-white text-center">
         <div className="m-auto">
           <SigninSignup />
         </div>
       </div>
     </>
   );
-}
+};
+
+export default Home;
