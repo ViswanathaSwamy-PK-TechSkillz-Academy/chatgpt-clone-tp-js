@@ -8,25 +8,32 @@ const handler = async (req) => {
     try {
 
         const { message } = await req.json();
+        console.log("Received message: ", message);
 
         const stream = await OpenAIEdgeStream(
             "https://api.openai.com/v1/chat/completions",
             {
                 headers: {
                     "content-type": "application/json",
-                    Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
+                    Authorization: `Bearer ${process.env.OPENAI_API_KEY_V1}`,
                 },
                 method: "POST",
                 body: JSON.stringify({
-                    model: "gpt-3.5-turbo",
-                    messages: [{ content: message, role: "user" }],
-                    stream: true,
+                    model: "gpt-3.5-turbo-16k",
+                    messages: [
+                        { "role": "user", "content": message }
+                    ],
+                    stream: true
                 }),
             }
         );
 
+        // Log the response stream status
+        console.log("Stream opened successfully");
+
         return new Response(stream);
     } catch (e) {
+        console.error("Error occurred:", e.message);
         return new Response(
             { message: "An error occurred in sendMessage" },
             { status: 500, statusText: "Internal Server Error" }
