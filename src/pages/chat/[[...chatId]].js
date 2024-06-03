@@ -3,6 +3,7 @@ import Head from 'next/head'
 import { ChatSidebar } from '@/components/ChatSidebar';
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import { streamReader } from "openai-edge-stream";
 
 const ChatPage = ({ chatId, title, messages = [] }) => {
 
