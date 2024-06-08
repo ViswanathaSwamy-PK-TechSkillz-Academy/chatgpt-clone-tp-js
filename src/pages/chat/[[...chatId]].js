@@ -21,7 +21,7 @@ const ChatPage = ({ chatId, title, messages = [] }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log("Message sent: ", messageText);
+
 
         setNewChatMessages((prev) => {
             const newChatMessages = [
@@ -35,6 +35,8 @@ const ChatPage = ({ chatId, title, messages = [] }) => {
 
             return newChatMessages;
         });
+
+        console.log("Message sent: ", messageText);
 
         const response = await fetch(`/api/chat/sendMessage`, {
             method: "POST",
@@ -74,11 +76,11 @@ const ChatPage = ({ chatId, title, messages = [] }) => {
                 <ChatSidebar />
                 <div className="flex flex-col overflow-hidden bg-gray-700 text-white">
                     <div className='flex-1 text-white'>
-                        {messages.map((message) => (
-                            <Message key={message._id} role={message.role} message={message} />
+                        {newChatMessages.map(message => (
+                            <Message key={message._id} role={message.role} content={message.content} />
                         ))}
 
-                        {incomingMessage && (<Message role="assistant" message={incomingMessage} />)}
+                        {incomingMessage && (<Message role="assistant" content={incomingMessage} />)}
                     </div>
                     <footer className='bg-gray-800 p-10 text-white'>
                         <form onSubmit={handleSubmit}>
