@@ -4,6 +4,7 @@ import { ChatSidebar } from '@/components/ChatSidebar';
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { streamReader } from "openai-edge-stream";
+import { Message } from '@/components/Message';
 
 const ChatPage = ({ chatId, title, messages = [] }) => {
 
@@ -72,7 +73,10 @@ const ChatPage = ({ chatId, title, messages = [] }) => {
                 <ChatSidebar />
                 <div className="flex flex-col overflow-hidden bg-gray-700 text-white">
                     <div className='flex-1 text-white'>
-                        {incomingMessage}
+                        {messages.map((message) => (
+                            <Message key={message._id} role={message.role} message={message} />
+                        ))}
+                        <Message role="assistant" message={incomingMessage} />
                     </div>
                     <footer className='bg-gray-800 p-10 text-white'>
                         <form onSubmit={handleSubmit}>
