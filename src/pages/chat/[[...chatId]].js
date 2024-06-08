@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { streamReader } from "openai-edge-stream";
 import { Message } from '@/components/Message';
+import { v4 as uuid } from "uuid";
 
 const ChatPage = ({ chatId, title, messages = [] }) => {
 
@@ -76,7 +77,8 @@ const ChatPage = ({ chatId, title, messages = [] }) => {
                         {messages.map((message) => (
                             <Message key={message._id} role={message.role} message={message} />
                         ))}
-                        <Message role="assistant" message={incomingMessage} />
+
+                        {incomingMessage && (<Message role="assistant" message={incomingMessage} />)}
                     </div>
                     <footer className='bg-gray-800 p-10 text-white'>
                         <form onSubmit={handleSubmit}>
