@@ -30,7 +30,7 @@ const ChatPage = ({ chatId, title, messages = [] }) => {
                     content: messageText,
                 },
             ];
-            
+
             return newChatMessages;
         });
 
