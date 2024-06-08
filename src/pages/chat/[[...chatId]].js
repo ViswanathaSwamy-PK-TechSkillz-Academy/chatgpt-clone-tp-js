@@ -8,11 +8,11 @@ import { streamReader } from "openai-edge-stream";
 const ChatPage = ({ chatId, title, messages = [] }) => {
 
     // console.log("props: ", title, messages);
-    const [newChatId, setNewChatId] = useState(null);
     const [incomingMessage, setIncomingMessage] = useState("");
     const [messageText, setMessageText] = useState("");
     const [newChatMessages, setNewChatMessages] = useState([]);
     const [generatingResponse, setGeneratingResponse] = useState(false);
+    const [newChatId, setNewChatId] = useState(null);
     const [fullMessage, setFullMessage] = useState("");
     const [originalChatId, setOriginalChatId] = useState(chatId);
     const router = useRouter();
@@ -20,6 +20,19 @@ const ChatPage = ({ chatId, title, messages = [] }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         console.log("Message sent: ", messageText);
+
+        setNewChatMessages((prev) => {
+            const newChatMessages = [
+                ...prev,
+                {
+                    _id: uuid(),
+                    role: "user",
+                    content: messageText,
+                },
+            ];
+            
+            return newChatMessages;
+        });
 
         const response = await fetch(`/api/chat/sendMessage`, {
             method: "POST",
