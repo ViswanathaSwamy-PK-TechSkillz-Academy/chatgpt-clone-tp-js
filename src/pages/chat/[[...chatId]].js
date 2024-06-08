@@ -44,6 +44,8 @@ const ChatPage = ({ chatId, title, messages = [] }) => {
         const reader = data.getReader();
         await streamReader(reader, async (message) => {
             console.log("MESSAGE: ", message);
+
+            setIncomingMessage((s) => `${s}${message.content}`);
         });
     };
 
@@ -56,7 +58,9 @@ const ChatPage = ({ chatId, title, messages = [] }) => {
             <div className="grid h-screen grid-cols-[260px_1fr]">
                 <ChatSidebar />
                 <div className="flex flex-col overflow-hidden bg-gray-700 text-white">
-                    <div className='flex-1'>Chat Window</div>
+                    <div className='flex-1 text-white'>
+                        {incomingMessage}
+                    </div>
                     <footer className='bg-gray-800 p-10 text-white'>
                         <form onSubmit={handleSubmit}>
                             <fieldset className="flex gap-2" disabled={generatingResponse}>
