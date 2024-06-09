@@ -1,10 +1,13 @@
 // pages/_app.js
 import React from 'react'
 import "@/styles/globals.css";
+import { UserProvider } from '@auth0/nextjs-auth0/client';
 
 const PageLayout = ({ Component, pageProps }) => {
     return (
-        <Component {...pageProps} />
+        <UserProvider>
+            <Component {...pageProps} />
+        </UserProvider>
     );
 };
 
