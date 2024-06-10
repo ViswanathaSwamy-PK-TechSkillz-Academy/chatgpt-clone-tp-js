@@ -18,12 +18,7 @@ export const Message = ({ role, content }) => {
       }`}>
       <div>
         {role === "user" && !!user && (
-          <Image
-            src={user?.picture}
-            width={30}
-            height={30}
-            alt="User avatar"
-            className="rounded-sm shadow-md shadow-black/50"
+          <Image src={user?.picture} width={30} height={30} alt="User avatar" className="rounded-sm shadow-md shadow-black/50"
           />
         )}
         {role === "assistant" && (
@@ -32,7 +27,7 @@ export const Message = ({ role, content }) => {
           </div>
         )}
       </div>
-      <div className="prose prose-invert">
+      <div>
         {/* <ReactMarkdown>{content}</ReactMarkdown> */}
         {content}
       </div>
