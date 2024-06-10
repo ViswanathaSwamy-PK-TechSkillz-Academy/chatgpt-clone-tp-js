@@ -80,7 +80,7 @@ const ChatPage = ({ chatId, title, messages = [] }) => {
                             <Message key={message._id} role={message.role} content={message.content} />
                         ))}
 
-                        {incomingMessage && (<Message role="assistant" content={incomingMessage} />)}
+                        {!!incomingMessage && (<Message role="assistant" content={incomingMessage} />)}
                     </div>
                     <footer className='bg-gray-800 p-10 text-white'>
                         <form onSubmit={handleSubmit}>
