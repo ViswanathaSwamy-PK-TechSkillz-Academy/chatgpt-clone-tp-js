@@ -21,7 +21,7 @@ export const Message = ({ role, content }) => {
           </div>
         )}
       </div>
-      <div>
+      <div className='prose prose-invert'>
         <ReactMarkdown>{content}</ReactMarkdown>
       </div>
     </div>
