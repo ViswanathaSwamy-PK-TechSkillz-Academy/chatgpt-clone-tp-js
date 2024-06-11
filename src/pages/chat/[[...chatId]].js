@@ -79,7 +79,7 @@ const ChatPage = ({ chatId, title, messages = [] }) => {
             <div className="grid h-screen grid-cols-[260px_1fr]">
                 <ChatSidebar />
                 <div className="flex flex-col overflow-hidden bg-gray-700 text-white">
-                    <div className='flex-1 text-white'>
+                    <div className='flex-1 text-white overflow-scroll'>
                         {newChatMessages.map(message => (
                             <Message key={message._id} role={message.role} content={message.content} />
                         ))}
