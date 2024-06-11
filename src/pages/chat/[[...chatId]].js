@@ -22,6 +22,7 @@ const ChatPage = ({ chatId, title, messages = [] }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
+        setGeneratingResponse(true);
 
         setNewChatMessages((prev) => {
             const newChatMessages = [
@@ -37,6 +38,7 @@ const ChatPage = ({ chatId, title, messages = [] }) => {
         });
 
         console.log("Message sent: ", messageText);
+        setMessageText("");
 
         const response = await fetch(`/api/chat/sendMessage`, {
             method: "POST",
@@ -64,6 +66,8 @@ const ChatPage = ({ chatId, title, messages = [] }) => {
 
             setIncomingMessage((s) => `${s}${message.content}`);
         });
+
+        setGeneratingResponse(false);
     };
 
     return (
