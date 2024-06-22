@@ -22,7 +22,7 @@ export const ChatSidebar = ({ chatId }) => {
     <div className="flex flex-col overflow-hidden bg-gray-900 text-white">
       <Link
         href="/chat"
-        className="side-menu-item bg-emerald-500 hover:bg-emerald-600"
+        className="side-menu-item bg-orange-500 hover:bg-orange-600"
       >
         <FontAwesomeIcon icon={faPlus} /> New chat
       </Link>

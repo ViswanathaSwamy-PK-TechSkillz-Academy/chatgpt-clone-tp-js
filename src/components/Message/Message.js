@@ -17,7 +17,7 @@ export const Message = ({ role, content }) => {
         )}
         {role === "assistant" && (
           <div className="flex h-[30px] w-[30px] items-center justify-center rounded-sm bg-gray-800 shadow-md shadow-black/50">
-            <FontAwesomeIcon icon={faRobot} className="text-emerald-200" />
+            <FontAwesomeIcon icon={faRobot} className="text-orange-200" />
           </div>
         )}
       </div>
