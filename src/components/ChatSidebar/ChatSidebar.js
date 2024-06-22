@@ -15,6 +15,7 @@ export const ChatSidebar = ({ chatId }) => {
       console.log("CHAT LIST: ", json);
       setChatList(json?.chats || []);
     };
+
     loadChatList();
   }, [chatId]);
 
@@ -22,7 +23,7 @@ export const ChatSidebar = ({ chatId }) => {
     <div className="flex flex-col overflow-hidden bg-gray-900 text-white">
       <Link
         href="/chat"
-        className="side-menu-item bg-orange-500 hover:bg-orange-600"
+        className="side-menu-item bg-emerald-500 hover:bg-emerald-600"
       >
         <FontAwesomeIcon icon={faPlus} /> New chat
       </Link>
@@ -34,7 +35,7 @@ export const ChatSidebar = ({ chatId }) => {
             className={`side-menu-item ${chatId === chat._id ? "bg-gray-700 hover:bg-gray-700" : ""
               }`}
           >
-            <FontAwesomeIcon icon={faMessage} className="text-white/50" />{" "}
+            <FontAwesomeIcon icon={faMessage} className="text-emerald-500" />{" "}
             <span
               title={chat.title}
               className="overflow-hidden text-ellipsis whitespace-nowrap"
@@ -45,7 +46,7 @@ export const ChatSidebar = ({ chatId }) => {
         ))}
       </div>
       <Link href="/api/auth/logout" className="side-menu-item">
-        <FontAwesomeIcon icon={faRightFromBracket} /> Logout
+        <FontAwesomeIcon icon={faRightFromBracket} className="text-emerald-500" /> Logout
       </Link>
     </div>
   );
