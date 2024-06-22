@@ -40,6 +40,23 @@ const ChatPage = ({ chatId, title, messages = [] }) => {
         console.log("Message sent: ", messageText);
         setMessageText("");
 
+        const response = await fetch(`/api/chat/createNewChat`, {
+            method: "POST",
+            headers: {
+                "content-type": "application/json",
+            },
+            body: JSON.stringify({ message: messageText }),
+        });
+
+        console.log("Received Response: ", response);
+        if (!response.ok) {
+            throw new Error(`Server error: ${response.statusText}`);
+        }
+
+        const jsonData = await response.json();
+        console.log("JSON DATA: ", jsonData);
+
+        /*
         const response = await fetch(`/api/chat/sendMessage`, {
             method: "POST",
             headers: {
@@ -66,6 +83,7 @@ const ChatPage = ({ chatId, title, messages = [] }) => {
 
             setIncomingMessage((s) => `${s}${message.content}`);
         });
+        */
 
         setGeneratingResponse(false);
     };
