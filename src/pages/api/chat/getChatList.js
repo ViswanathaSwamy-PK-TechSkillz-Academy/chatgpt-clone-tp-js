@@ -1,11 +1,13 @@
 import { getSession } from "@auth0/nextjs-auth0";
-import clientPromise from "@lib/mongodb";
+import clientPromise from "@/lib/mongodb";
 
 export default async function handler(req, res) {
     try {
         const { user } = await getSession(req, res);
+
         const client = await clientPromise;
         const db = client.db("ChattyPete");
+
         const chats = await db
             .collection("chats")
             .find(
