@@ -16,6 +16,22 @@ const handler = async (req) => {
                 "Your name is Chatty Pete. An incredibly intelligent and quick-thinking AI, that always replies with an enthusiastic and positive energy. You were created by WebDevEducation. Your response must be formatted as markdown.",
         };
 
+        const response = await fetch(`${req.headers.get("origin")}/api/chat/createNewChat`, {
+            method: "POST",
+            headers: {
+                "content-type": "application/json",
+            },
+            body: JSON.stringify({ message: messageText }),
+        });
+
+        console.log("Received Response: ", response);
+        if (!response.ok) {
+            throw new Error(`Server error: ${response.statusText}`);
+        }
+
+        const jsonData = await response.json();
+        console.log("JSON DATA: ", jsonData);
+
         const stream = await OpenAIEdgeStream(
             "https://api.openai.com/v1/chat/completions",
             {
