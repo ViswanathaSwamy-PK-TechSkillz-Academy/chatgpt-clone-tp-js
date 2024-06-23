@@ -22,7 +22,7 @@ const handler = async (req) => {
                 "content-type": "application/json",
                 cookie: req.headers.get("cookie"),
             },
-            body: JSON.stringify({ message: messageText }),
+            body: JSON.stringify({ message }),
         });
 
         console.log("Received Response: ", response);
@@ -52,6 +52,9 @@ const handler = async (req) => {
                 }),
             },
             {
+                onBeforeStream: ({ emit }) => {
+                    emit(chatId, "newChatId");
+                },
                 onAfterStream: async ({ fullContent }) => {
                     await fetch(
                         `${req.headers.get("origin")}/api/chat/addMessageToChat`,
