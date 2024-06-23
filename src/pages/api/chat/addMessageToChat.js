@@ -13,7 +13,13 @@ export default async function handler(req, res) {
         let objectId;
 
         try {
-            objectId = new ObjectId(chatId);
+            // Validate that chatId is a valid hexadecimal string of length 24 (12 bytes)
+            if (!ObjectId.isValid(chatId)) {
+                throw new Error('Invalid chat ID');
+            }
+
+            // Create ObjectId instance
+            objectId = new ObjectId.createFromTime(chatId);
         } catch (e) {
             res.status(422).json({
                 message: "Invalid chat ID",
