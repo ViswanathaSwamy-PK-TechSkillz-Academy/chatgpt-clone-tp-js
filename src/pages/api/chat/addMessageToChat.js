@@ -28,12 +28,7 @@ export default async function handler(req, res) {
         }
 
         // validate content data
-        if (
-            !content ||
-            typeof content !== "string" ||
-            (role === "user" && content.length > 200) ||
-            (role === "assistant" && content.length > 100000)
-        ) {
+        if (!content || typeof content !== "string" || (role === "user" && content.length > 200) || (role === "assistant" && content.length > 100000)) {
             res.status(422).json({
                 message: "content is required and must be less than 200 characters",
             });
@@ -49,16 +44,10 @@ export default async function handler(req, res) {
         }
 
         const chat = await db.collection("chats").findOneAndUpdate(
-            {
-                _id: objectId,
-                userId: user.sub,
-            },
+            { _id: objectId, userId: user.sub, },
             {
                 $push: {
-                    messages: {
-                        role,
-                        content,
-                    },
+                    messages: { role, content, },
                 },
             },
             {
@@ -67,10 +56,7 @@ export default async function handler(req, res) {
         );
 
         res.status(200).json({
-            chat: {
-                ...chat.value,
-                _id: chat.value._id.toString(),
-            },
+            chat: { ...chat.value, _id: chat.value._id.toString(), },
         });
     } catch (e) {
         res
