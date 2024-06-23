@@ -20,6 +20,7 @@ const handler = async (req) => {
             method: "POST",
             headers: {
                 "content-type": "application/json",
+                cookie: req.headers.get("cookie"),
             },
             body: JSON.stringify({ message: messageText }),
         });
@@ -31,6 +32,7 @@ const handler = async (req) => {
 
         const jsonData = await response.json();
         console.log("JSON DATA: ", jsonData);
+        const chatId = jsonData._id;
 
         const stream = await OpenAIEdgeStream(
             "https://api.openai.com/v1/chat/completions",
@@ -48,6 +50,25 @@ const handler = async (req) => {
                     ],
                     stream: true
                 }),
+            },
+            {
+                onAfterStream: async ({ fullContent }) => {
+                    await fetch(
+                        `${req.headers.get("origin")}/api/chat/addMessageToChat`,
+                        {
+                            method: "POST",
+                            headers: {
+                                "content-type": "application/json",
+                                cookie: req.headers.get("cookie"),
+                            },
+                            body: JSON.stringify({
+                                chatId,
+                                role: "assistant",
+                                content: fullContent,
+                            }),
+                        }
+                    );
+                },
             }
         );
 
