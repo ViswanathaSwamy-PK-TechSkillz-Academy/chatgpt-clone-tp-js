@@ -6,17 +6,18 @@ import { useEffect, useState } from "react";
 export const ChatSidebar = ({ chatId }) => {
   const [chatList, setChatList] = useState([]);
 
-  // useEffect(() => {
-  //   const loadChatList = async () => {
-  //     const response = await fetch(`/api/chat/getChatList`, {
-  //       method: "POST",
-  //     });
-  //     const json = await response.json();
-  //     console.log("CHAT LIST: ", json);
-  //     setChatList(json?.chats || []);
-  //   };
-  //   loadChatList();
-  // }, [chatId]);
+  useEffect(() => {
+    const loadChatList = async () => {
+      const response = await fetch(`/api/chat/getChatList`, {
+        method: "POST",
+      });
+      const json = await response.json();
+      console.log("CHAT LIST: ", json);
+      setChatList(json?.chats || []);
+    };
+
+    loadChatList();
+  }, [chatId]);
 
   return (
     <div className="flex flex-col overflow-hidden bg-gray-900 text-white">
@@ -34,7 +35,7 @@ export const ChatSidebar = ({ chatId }) => {
             className={`side-menu-item ${chatId === chat._id ? "bg-gray-700 hover:bg-gray-700" : ""
               }`}
           >
-            <FontAwesomeIcon icon={faMessage} className="text-white/50" />{" "}
+            <FontAwesomeIcon icon={faMessage} className="text-emerald-500" />{" "}
             <span
               title={chat.title}
               className="overflow-hidden text-ellipsis whitespace-nowrap"
@@ -45,7 +46,7 @@ export const ChatSidebar = ({ chatId }) => {
         ))}
       </div>
       <Link href="/api/auth/logout" className="side-menu-item">
-        <FontAwesomeIcon icon={faRightFromBracket} /> Logout
+        <FontAwesomeIcon icon={faRightFromBracket} className="text-emerald-500" /> Logout
       </Link>
     </div>
   );
