@@ -1,3 +1,6 @@
+import { getSession } from "@auth0/nextjs-auth0";
+import clientPromise from "@/lib/mongodb";
+import { ObjectId } from "mongodb";
 import React from 'react'
 import Head from 'next/head'
 import { ChatSidebar } from '@/components/ChatSidebar';
@@ -9,7 +12,7 @@ import { v4 as uuid } from "uuid";
 
 const ChatPage = ({ chatId, title, messages = [] }) => {
 
-    // console.log("props: ", title, messages);
+    console.log("props: ", title, messages);
     const [incomingMessage, setIncomingMessage] = useState("");
     const [messageText, setMessageText] = useState("");
     const [newChatMessages, setNewChatMessages] = useState([]);
@@ -82,6 +85,8 @@ const ChatPage = ({ chatId, title, messages = [] }) => {
         setGeneratingResponse(false);
     };
 
+    const allMessages = [...messages, ...newChatMessages];
+
     return (
         <>
             <Head>
@@ -89,10 +94,10 @@ const ChatPage = ({ chatId, title, messages = [] }) => {
             </Head>
 
             <div className="grid h-screen grid-cols-[260px_1fr]">
-                <ChatSidebar />
+                <ChatSidebar chatId={chatId} />
                 <div className="flex flex-col overflow-hidden bg-gray-700 text-white">
                     <div className='flex-1 text-white overflow-scroll'>
-                        {newChatMessages.map(message => (
+                        {allMessages.map(message => (
                             <Message key={message._id} role={message.role} content={message.content} />
                         ))}
 
@@ -120,3 +125,34 @@ const ChatPage = ({ chatId, title, messages = [] }) => {
 };
 
 export default ChatPage;
+
+export const getServerSideProps = async (ctx) => {
+    const chatId = ctx.params?.chatId?.[0] || null;
+
+    if (chatId) {
+
+        const { user } = await getSession(ctx.req, ctx.res);
+        const client = await clientPromise;
+        const db = client.db("ChattyPete");
+
+        const chat = await db.collection("chats").findOne({
+            userId: user.sub,
+            _id: new ObjectId(chatId),
+        });
+
+        return {
+            props: {
+                chatId,
+                title: chat?.title,
+                messages: chat?.messages.map((message) => ({
+                    ...message,
+                    _id: uuid(),
+                }))
+            },
+        };
+    }
+
+    return {
+        props: {},
+    };
+};
