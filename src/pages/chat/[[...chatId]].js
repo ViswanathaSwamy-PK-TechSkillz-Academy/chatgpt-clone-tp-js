@@ -19,6 +19,14 @@ const ChatPage = ({ chatId, title, messages = [] }) => {
     const [originalChatId, setOriginalChatId] = useState(chatId);
     const router = useRouter();
 
+    // if we've created a new chat
+    useEffect(() => {
+        if (!generatingResponse && newChatId) {
+            setNewChatId(null);
+            router.push(`/chat/${newChatId}`);
+        }
+    }, [newChatId, generatingResponse, router]);
+
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -64,7 +72,11 @@ const ChatPage = ({ chatId, title, messages = [] }) => {
         await streamReader(reader, async (message) => {
             console.log("MESSAGE: ", message);
 
-            setIncomingMessage((s) => `${s}${message.content}`);
+            if (message.event === "newChatId") {
+                setNewChatId(message.content);
+            } else {
+                setIncomingMessage((s) => `${s}${message.content}`);
+            }
         });
 
         setGeneratingResponse(false);
