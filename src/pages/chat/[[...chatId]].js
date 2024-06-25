@@ -144,7 +144,7 @@ export const getServerSideProps = async (ctx) => {
             props: {
                 chatId,
                 title: chat?.title,
-                messages: chat?.messages.map((message) => ({
+                messages: chat?.messages?.map((message) => ({
                     ...message,
                     _id: uuid(),
                 }))
