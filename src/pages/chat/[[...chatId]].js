@@ -137,14 +137,14 @@ export const getServerSideProps = async (ctx) => {
 
         const chat = await db.collection("chats").findOne({
             userId: user.sub,
-            _id: new ObjectId(chatId),
+            _id: ObjectId.createFromHexString(chatId),
         });
 
         return {
             props: {
                 chatId,
                 title: chat?.title,
-                messages: chat?.messages.map((message) => ({
+                messages: chat?.messages?.map((message) => ({
                     ...message,
                     _id: uuid(),
                 }))

@@ -44,7 +44,7 @@ export default async function handler(req, res) {
         // }
 
         const chat = await db.collection("chats").findOneAndUpdate(
-            { _id: new ObjectId(chatId), userId: user.sub, },
+            { _id: ObjectId.createFromHexString(chatId), userId: user.sub, },
             {
                 $push: {
                     messages: { role, content, },
